@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const menu = document.querySelector(".menu");
+        const close = document.querySelector(".close");
+        const open = document.querySelector(".op");
+
+        menuToggle.addEventListener("click", () => {
+          if (menu.classList.contains("flex")) {
+            menu.classList.replace("flex", "hidden");
+            close.classList.replace("flex", "hidden");
+            open.classList.replace("hidden", "flex");
+          } else {
+            menu.classList.replace("hidden", "flex");
+            close.classList.replace("hidden", "flex");
+            open.classList.replace("flex", "hidden");
+          }
+        });
+      });
+      function enquire() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let number = document.getElementById("number").value;
+        const nonsubmit = document.getElementsByClassName("form-nonsubmit")[0];
+        const submit = document.getElementsByClassName("form-submit")[0];
+        const submitform = document.getElementsByClassName("submit-form")[0];
+
+        // Correct URL format for Google Forms response submission
+        const url = `https://docs.google.com/forms/d/e/1FAIpQLSdufcIRNFIj1Uj39Rhlif_yiYZ-u89j_WQjuZ5bs5aa242k8w/formResponse?usp=pp_url&entry.1700259945=${name}&entry.616983010=${email}&entry.434818791=${number}`;
+
+        // Clear the input fields
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("number").value = "";
+
+        if (nonsubmit.classList.contains("flex")) {
+          nonsubmit.classList.replace("flex", "hidden");
+          submit.classList.replace("opacity-0", "opacity-100");
+          //transition-opacity ease-in duration-700
+        }
+        // Redirect to Google Form URL
+        fetch(url).then((res) => {
+          console.log(res);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="bg-neutral-900 p-4">
+        <!-- ========== HEADER ========== -->
+        <header class="fixed inset-x-0 top-4 z-50 flex w-full flex-wrap justify-center px-4 text-sm md:flex-nowrap">
+          <nav class="relative mx-2 mt-4 w-full max-w-xl rounded-[2rem] bg-neutral-800/30 py-2.5 backdrop-blur-md md:mx-auto md:flex md:items-center md:justify-between md:px-4 md:py-0">
+            <div class="flex items-center justify-between px-8 md:px-5">
+              <!-- Logo -->
+              <div>
+                <a href="#" aria-label="Runiq Wellness">
+                  <svg width="195" height="16.91820978689666" viewBox="0 0 350 30.366017566224777" class="looka-1j8o68f">
+                    <defs id="SvgjsDefs1013">
+                      <linearGradient id="SvgjsLinearGradient1016">
+                        <stop id="SvgjsStop1017" stop-color="#905e26" offset="0"></stop>
+                        <stop id="SvgjsStop1018" stop-color="#f5ec9b" offset="0.5"></stop><stop id="SvgjsStop1019" stop-color="#905e26" offset="1">
+                          </stop>
+                      </linearGradient>
+                      </defs>
+                      <g id="SvgjsG1014" featurekey="K5GtsI-0" transform="matrix(1.9769544355682869,0,0,1.9769544355682869,-1.9769530215402844,-10.912789389314865)" fill="url(#SvgjsLinearGradient1016)">
+                        <path d="M13.4 19.82 l0 0.18 l-3.14 0 l-4.08 -4.68 l-2.54 0 l0 4.68 l-2.64 0 l0 -14.02 c2.22 0 4.44 0.02 6.66 0.02 c3.3 0.02 5.04 2.22 5.04 4.64 c0 1.92 -0.88 3.86 -3.54 4.4 z M7.66 8.46 l-4.02 0 l0 4.48 l4.02 0 c1.68 0 2.4 -1.12 2.4 -2.24 s-0.74 -2.24 -2.4 -2.24 z M24.560000000000002 6.02 l2.62 0 l0 8.02 c0 4.14 -2.54 6.26 -6.06 6.26 c-3.36 0 -6.22 -2.04 -6.22 -6.26 l0 -8.02 l2.62 0 l0 8.02 c0 2.52 1.44 3.86 3.62 3.86 s3.42 -1.46 3.42 -3.86 l0 -8.02 z M38.96 14.68 l0 -8.7 l2.64 0 l0 14.02 l-1.64 0 l0 0.02 l-7.36 -9.46 l0 9.44 l-2.64 0 l0 -14 l2.14 0 z M46.66 20 l-2.62 0 l0 -14 l2.62 0 l0 14 z M55.67999999999999 5.66 c4.92 0 7.12 3.56 7.18 7.16 c0.02 1.6 -0.4 3.26 -1.3 4.56 l1.66 1.64 l-1.86 1.86 l-1.7 -1.68 c-1.06 0.68 -2.4 1.04 -3.98 1.04 c-4.98 0 -7.18 -3.62 -7.2 -7.26 c-0.02 -3.66 2.28 -7.32 7.2 -7.32 z M55.67999999999999 8.04 c-3.3 0 -4.64 2.64 -4.6 5 c0.04 2.3 1.56 4.76 4.6 4.76 c3.16 0 4.68 -2.66 4.58 -5.06 c-0.1 -2.26 -1.28 -4.7 -4.58 -4.7 z M88.98 6 l-5.04 14 l-2.24 0 l-1.74 -4.4 l-1.48 -4.42 l-1.46 4.46 l-1.7 4.36 l-2.24 0 l-5.14 -14 l2.96 0 l3.3 10.1 l3.4 -10.1 l1.72 0 l3.5 10.1 l3.2 -10.1 l2.96 0 z M101.04 17.4 l0 2.6 l-10.48 0 l0 -14 l10.48 0 l0 2.56 l-7.86 0 l0 3.22 l7.58 0 l0 2.46 l-7.58 0 l0 3.16 l7.86 0 z M103.08000000000001 6 l2.64 0 l0 11.56 l7.2 0 l0 2.44 l-9.84 0 l0 -14 z M114.78000000000002 6 l2.64 0 l0 11.56 l7.2 0 l0 2.44 l-9.84 0 l0 -14 z M135.68 14.68 l0 -8.7 l2.64 0 l0 14.02 l-1.64 0 l0 0.02 l-7.36 -9.46 l0 9.44 l-2.64 0 l0 -14 l2.14 0 z M151.18 17.4 l0 2.6 l-10.48 0 l0 -14 l10.48 0 l0 2.56 l-7.86 0 l0 3.22 l7.58 0 l0 2.46 l-7.58 0 l0 3.16 l7.86 0 z M164.38 8.3 l-2.1 1.08 c-0.48 -0.8 -1.8 -1.56 -3.32 -1.56 c-1.96 0 -2.9 0.82 -2.9 1.86 c0 1.22 1.44 1.56 3.12 1.76 c2.92 0.36 5.64 1.12 5.64 4.46 c0 3.12 -2.76 4.46 -5.88 4.46 c-2.86 0 -5.06 -0.88 -6.1 -3.44 l2.2 -1.14 c0.62 1.54 2.24 2.22 3.94 2.22 c1.66 0 3.22 -0.58 3.22 -2.1 c0 -1.32 -1.38 -1.86 -3.24 -2.06 c-2.86 -0.34 -5.5 -1.1 -5.5 -4.24 c0 -2.88 2.84 -4.06 5.42 -4.08 c2.18 0 4.44 0.62 5.5 2.78 z M177.6 8.3 l-2.1 1.08 c-0.48 -0.8 -1.8 -1.56 -3.32 -1.56 c-1.96 0 -2.9 0.82 -2.9 1.86 c0 1.22 1.44 1.56 3.12 1.76 c2.92 0.36 5.64 1.12 5.64 4.46 c0 3.12 -2.76 4.46 -5.88 4.46 c-2.86 0 -5.06 -0.88 -6.1 -3.44 l2.2 -1.14 c0.62 1.54 2.24 2.22 3.94 2.22 c1.66 0 3.22 -0.58 3.22 -2.1 c0 -1.32 -1.38 -1.86 -3.24 -2.06 c-2.86 -0.34 -5.5 -1.1 -5.5 -4.24 c0 -2.88 2.84 -4.06 5.42 -4.08 c2.18 0 4.44 0.62 5.5 2.78 z"></path>
+                      </g>
+                  </svg>
+                </a>
+              </div>
+              <!-- End Logo -->
+      
+              <div class="md:hidden">
+                <!-- Toggle Button -->
+                <button type="button" class="hs-collapse-toggle flex size-6 items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" id="hs-navbar-header-floating-collapse" aria-expanded="false" aria-controls="hs-navbar-header-floating" aria-label="Toggle navigation" data-hs-collapse="#hs-navbar-header-floating">
+                  <svg class="hs-collapse-open:hidden size-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" x2="21" y1="6" y2="6" />
+                    <line x1="3" x2="21" y1="12" y2="12" />
+                    <line x1="3" x2="21" y1="18" y2="18" />
+                  </svg>
+                  <svg class="hs-collapse-open:block hidden size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+                <!-- End Toggle Button -->
+              </div>
+            </div>
+      
+            <div id="hs-navbar-header-floating" class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block" aria-labelledby="hs-navbar-header-floating-collapse">
+              <div class="mt-3 flex flex-col gap-2 py-2 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-3 md:py-0 md:ps-7">
+                <a class="border-s-2 border-gray-800 px-4 py-0.5 font-medium text-gray-800 focus:outline-none md:border-b-2 md:border-s-0 md:px-1 md:py-3 dark:border-neutral-200 dark:text-neutral-200" href="#" aria-current="page">Home</a>
+                <a class="border-s-2 border-transparent px-4 py-0.5 text-gray-500 hover:text-gray-800 focus:outline-none md:border-b-2 md:border-s-0 md:px-1 md:py-3 dark:text-neutral-400 dark:hover:text-neutral-200" href="#">Projects</a>
+                <a class="border-s-2 border-transparent px-4 py-0.5 text-gray-500 hover:text-gray-800 focus:outline-none md:border-b-2 md:border-s-0 md:px-1 md:py-3 dark:text-neutral-400 dark:hover:text-neutral-200" href="#">Work</a>
+                <a class="border-s-2 border-transparent px-4 py-0.5 text-gray-500 hover:text-gray-800 focus:outline-none md:border-b-2 md:border-s-0 md:px-1 md:py-3 dark:text-neutral-400 dark:hover:text-neutral-200" href="#">Articles</a>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <!-- ========== END HEADER ========== -->
+        <!-- Hero -->
+        <!-- Hero -->
+        <div class="relative h-full rounded-2xl bg-[url('https://i.ibb.co/28R5JQy/medium-shot-woman-helping-fit-man-gym-23-2149740138.jpg')] bg-cover bg-center">
+          <div class="absolute inset-0 h-full rounded-2xl bg-black/40"></div>
+          <div class="relative m-2 mx-auto max-w-[85rem] space-y-8 px-4 py-32 sm:px-6 lg:px-8">
+            <!-- Title -->
+            <div class="mx-auto max-w-3xl md:text-center">
+              <h1 class="block text-6xl font-extrabold text-gray-200 md:text-7xl lg:text-8xl">Transform Your Body, Mind, and Life</h1>
+            </div>
+            <!-- End Title -->
+      
+            <div class="mx-auto max-w-3xl py-4 md:text-center">
+              <p class="text-2xl text-white/80">Join our fitness community and achieve your goals.</p>
+            </div>
+      
+            <!-- Buttons -->
+            <div class="mx-auto max-w-3xl py-16 md:text-center">
+              <a class="border-transparen inline-flex items-center justify-center gap-x-3 rounded-full border bg-teal-600 px-6 py-3 text-center text-sm font-medium text-white shadow-lg shadow-transparent hover:shadow-teal-700/50 focus:shadow-teal-700/50 focus:outline-none" href="#">
+                Get started
+                <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+              </a>
+            </div>
+            <!-- End Buttons -->
+          </div>
+        </div>
+      
+        <!-- End Hero -->
+        <div>
+          <section id="features" class="container mx-auto py-36">
+            <div class=" grid justify-center grid-cols-2 md:grid-cols-3 gap-4"">
+              <div class="relative select-none rounded-lg text-left">
+                <div class="flex h-full flex-col">
+                    <div class="flex">
+                      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100.000000pt" height="100.000000pt" viewBox="0 0 128.000000 128.000000" preserveAspectRatio="xMidYMid meet">
+                        <g transform="translate(0.000000,128.000000) scale(0.100000,-0.100000)" fill="#0d9488" stroke="none">
+                          <path
+                            d="M212 1068 c-7 -7 -12 -19 -12 -27 0 -9 87 -102 192 -208 l193 -193
+      -193 -193 c-105 -106 -192 -199 -192 -208 0 -36 19 -39 240 -39 l215 0 213
+      213 c116 117 212 219 212 227 0 8 -96 111 -213 228 l-212 212 -216 0 c-154 0
+      -218 -3 -227 -12z"
+                          />
+                        </g>
+                      </svg>
+                      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100.000000pt" height="100.000000pt" viewBox="0 0 128.000000 128.000000" preserveAspectRatio="xMidYMid meet" class="-ml-14 sm:-ml-16">
+                        <g transform="translate(0.000000,128.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+                          <path
+                            d="M212 1068 c-7 -7 -12 -19 -12 -27 0 -9 87 -102 192 -208 l193 -193
+      -193 -193 c-105 -106 -192 -199 -192 -208 0 -36 19 -39 240 -39 l215 0 213
+      213 c116 117 212 219 212 227 0 8 -96 111 -213 228 l-212 212 -216 0 c-154 0
+      -218 -3 -227 -12z"
+                          />
+                        </g>
+                      </svg>
+                    </div>
+                    <p class="text-white text-2xl sm:text-4xl ml-4 font-extrabold">PERSONAL TRAINING</p>
+                </div>
+              </div>
+      
+              <div class="row-span-2 p-2">
+                <div class="flex h-full flex-col justify-between rounded-md sm:py-0 py-14">
+                  <img src="https://img.freepik.com/free-photo/serious-boxer-gloves-training-smoke_23-2147752917.jpg?t=st=1725982349~exp=1725985949~hmac=8d7a84803d62bde3a7169d4c8463ac4b4abfc54ba0f99d63fcfd9a4077eda7b2&w=996" class="rounded-2xl h-full object-cover object-left">
+                </div>
+              </div>
+      
+              <div class=" p-2">
+                <div class="flex h-full flex-col justify-between rounded-md sm:py-0 py-14">
+                  <img src="https://img.freepik.com/free-photo/front-view-male-doctor-showing-his-strength-yellow-wall_179666-12934.jpg?t=st=1725982147~exp=1725985747~hmac=34caf95060c055b8647236504948b77052d640acb2f392be10fc1d7bf5525bef&w=2000" class="rounded-2xl -scale-x-100">
+                </div>
+              </div>
+      
+              <div class="relative p-2">
+                <div class="flex h-full flex-col justify-between rounded-2xl p-6 bg-neutral-800 xl:w-9/12 md:w-10/12 w-full">
+                  <div class="space-y-2 ">
+                    <h3 class="font-semibold text-white text-lg sm:text-xl">WE OFFER</h3>
+                    <p class="sm:text-lg text-white/70">
+                    Free trial sessions for new members</p>
+                    <button type="button" class="text-black bg-white sm:font-medium text-xs sm:text-sm rounded-full pr-2 pl-3 py-2.5 text-center inline-flex items-center">
+                    Choose plan
+                    <div class="p-2 ml-2 bg-teal-600 rounded-full">
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                    </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="relative p-2">
+                    <h3 class="text-lg text-white/70">Tailored workout plans designed to match your individual fitness level, goals, and lifestyle.</h3>
+              </div>
+            </div>
+          </section>
+        </div>
+      
+        <div class="relative rounded-2xl bg-neutral-800">
+          <!-- Pricing -->
+          <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-28 mx-auto">
+            <!-- Title -->
+            <div class="flex sm:flex-row flex-col w-full justify-between text-center mb-10 lg:mb-14">
+              <div class="flex">
+                      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100.000000pt" height="100.000000pt" viewBox="0 0 128.000000 128.000000" preserveAspectRatio="xMidYMid meet">
+                        <g transform="translate(0.000000,128.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+                          <path
+                            d="M212 1068 c-7 -7 -12 -19 -12 -27 0 -9 87 -102 192 -208 l193 -193
+      -193 -193 c-105 -106 -192 -199 -192 -208 0 -36 19 -39 240 -39 l215 0 213
+      213 c116 117 212 219 212 227 0 8 -96 111 -213 228 l-212 212 -216 0 c-154 0
+      -218 -3 -227 -12z"
+                          />
+                        </g>
+                      </svg>
+                      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100.000000pt" height="100.000000pt" viewBox="0 0 128.000000 128.000000" preserveAspectRatio="xMidYMid meet" class="-ml-14 sm:-ml-16">
+                        <g transform="translate(0.000000,128.000000) scale(0.100000,-0.100000)" fill="#ffffff66" stroke="none">
+                          <path
+                            d="M212 1068 c-7 -7 -12 -19 -12 -27 0 -9 87 -102 192 -208 l193 -193
+      -193 -193 c-105 -106 -192 -199 -192 -208 0 -36 19 -39 240 -39 l215 0 213
+      213 c116 117 212 219 212 227 0 8 -96 111 -213 228 l-212 212 -216 0 c-154 0
+      -218 -3 -227 -12z"
+                          />
+                        </g>
+                      </svg>
+                    </div>
+              <div class="flex flex-col text-right">
+              <h2 class="text-3xl font-extrabold md:text-5xl text-white">FLEXIBLE MEMBERSHIP PLANS</h2>
+              <p class="mt-1 text-gray-600 dark:text-neutral-400">Choose the Plan that Fits Your Lifestyle</p>
+              </div>
+            </div>
+            <!-- End Title -->
+      
+      
+            <!-- Grid -->
+            <div class="py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+              <!-- Card -->
+              <div class="flex flex-col border text-center rounded-2xl bg-white px-5 xl:px-8 py-8 dark:border-neutral-800">
+                <p class="py-1 px-2 rounded-lg bg-teal-600 mx-auto ">Regular</p>
+                <div class="flex w-full justify-between  my-4">
+                  <p class="font-bold text-2xl text-black ml-1">Monthly</p>
+                  <div class="flex flex-col text-right">
+                    <p class="text-3xl font-bold">$39
+                    </p>
+                    <p class="items-end text-slate-600">/month
+                    </p>
+                    </div>
+                    </div>
+                <ul class="mt-7 space-y-2.5 text-sm text-black">
+                  <li class="flex gap-x-2">
+                    <svg class="shrink-0 mt-0.5 size-4 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span class="text-start">
+                      Professional Trainers
+                    </span>
+                  </li>
+      
+                  <li class="flex gap-x-2">
+                    <svg class="shrink-0 mt-0.5 size-4 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span class="text-start">
+                      All Facilities
+                    </span>
+                  </li>
+      
+                  <li class="flex gap-x-2">
+                    <svg class="shrink-0 mt-0.5 size-4 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span class="text-start">
+                      Discount Drinks and Suplement
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <!-- End Card -->
+      
+              <!-- Card -->
+              <div class="flex flex-col text-left rounded-xl bg-neutral-700 px-8 xl:py-8 py-14">
+                <h4 class="font-semibold text-xl text-white">3 Months</h4>
+                <p class="items-center text-neutral-600 font-bold py-3 px-6 mr-auto -ml-2 mt-5 rounded-full bg-neutral-800">
+                  <span class="text-white text-2xl">$33/</span>month
+                </p>
+                <p class="mt-2 text-neutral-200">
+                  <span>3-months:</span>
+                  $99
+                </p>
+                <ul class="mt-7 -ml-1 space-y-2.5 text-sm">
+                  <li class="flex gap-x-2">
+                    <svg class="shrink-0 mt-0.5 size-4 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span class="text-neutral-400">
+                      Same as the Regular plan
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <!-- End Card -->
+      
+              <!-- Card -->
+              <div class="flex flex-col text-left rounded-xl bg-neutral-700 p-8">
+                <h4 class="font-semibold text-xl text-white">6 Months</h4>
+                <p class="items-center text-neutral-600 font-bold py-3 px-6 mr-auto -ml-2 mt-4 rounded-full bg-neutral-800">
+                  <span class="text-white text-2xl">$29.83/</span>month
+                </p>
+                
+                <div class="py-2 flex xl:flex-row flex-col xl:space-x-2 xl:items-center">
+                  <div class="text-lg text-neutral-200">6-months: $179</div>
+                  <p class="px-2 py-1 text-xs my-2 mr-auto bg-teal-600 rounded-xl">Save 10%</p>
+                </div>
+                <ul class="mt-7 -ml-1 space-y-2.5 text-sm">
+                  <li class="flex gap-x-2">
+                    <svg class="shrink-0 mt-0.5 size-4 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span class="text-neutral-400">
+                      Same as the Regular plan
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <!-- End Card -->
+      
+              <!-- Card -->
+              <div class="flex flex-col text-left rounded-xl bg-neutral-700 p-8">
+                <h4 class="font-semibold text-xl text-white">12 Months</h4>
+                <p class="items-center text-neutral-600 font-bold py-3 px-6 mr-auto -ml-2 mt-4 rounded-full bg-neutral-800">
+                  <span class="text-white text-2xl">$24.92/</span>month
+                </p>
+                <div class="py-2 flex xl:flex-row flex-col xl:space-x-2 xl:items-center">
+                  <div class="text-lg text-neutral-200">12-months: $299</div>
+                  <p class="px-2 py-1 text-xs my-2 mr-auto bg-teal-600 rounded-xl">Save 20%</p>
+                </div>
+                <ul class="mt-7 -ml-1 space-y-2.5 text-sm">
+                  <li class="flex gap-x-2">
+                    <svg class="shrink-0 mt-0.5 size-4 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span class="text-neutral-400">
+                      Same as the Regular plan
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <!-- End Card -->
+            </div>
+            <!-- End Grid -->
+          </div>
+      <!-- End Pricing -->
+        </div>
+      
+      
+          <!-- Testimonials -->
+      <div class=" relative my-16 lg:my-36 rounded-2xl py-20 bg-teal-600">
+        <div class="relative max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+          <!-- Title -->
+          <div class="max-w-3xl w-3/4 lg:w-full mb-6 sm:mb-10 md:mb-16">
+            <h2 class="text-3xl sm:text-4xl lg:text-6xl text-black font-extrabold">
+              WHAT OUR MEMBERS ARE SAYING...
+            </h2>
+            <h3 class="text-lg sm:text-2xl lg:text-4xl text-black/80">Real Stories, Real Results</h3>
+          </div>
+          <!-- End Title -->
+      
+          <!-- Grid -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card -->
+            <div class="flex h-auto">
+              <div class="flex flex-col rounded-xl bg-neutral-900">
+                <div class="flex-auto p-4 md:p-6">
+                  <p class="text-base italic md:text-lg text-neutral-200">
+                    " I've been a member of RuniQ wellness for over six months now, and it has been a fantastic experience! The facility is always clean and well-maintained, with a wide variety of equipment that caters to all fitness levels. The coach is ... "
+                  </p>
+                </div>
+      
+                <div class="p-4 rounded-b-xl md:px-7 bg-neutral-800">
+                  <div class="flex items-center gap-x-3">
+                    <div class="shrink-0">
+                      <img class="size-8 sm:h-[2.875rem] sm:w-[2.875rem] rounded-full" src="https://riverwalkcounseling.net/wp-content/uploads/2018/06/image-placeholder-female-1.png" alt="Avatar">
+                    </div>
+      
+                    <div class="grow">
+                      <p class="text-sm sm:text-base font-semibold text-neutral-200">
+                        Siddhi Shinde
+                      </p>
+                      <p class="text-xs text-neutral-400">
+                        Happy customer
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Card -->
+      
+            <!-- Card -->
+            <div class="flex h-auto">
+              <div class="flex flex-col rounded-xl bg-neutral-900">
+                <div class="flex-auto p-4 md:p-6">
+                  <p class="text-base italic md:text-lg text-neutral-200">
+                    " Due to accident my shoulder muscles got impacted and I wanted to strengthen my weak muscles.I was looking for personal trainer who is well equipped and has knowledge how to handle person with shoulder injury. I came across RuniQ Wellness ... "
+                  </p>
+                </div>
+      
+                <div class="p-4 rounded-b-xl md:px-7 bg-neutral-800">
+                  <div class="flex items-center gap-x-3">
+                    <div class="shrink-0">
+                      <img class="size-8 sm:h-[2.875rem] sm:w-[2.875rem] rounded-full" src="https://static.vecteezy.com/system/resources/thumbnails/001/840/618/small_2x/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg" alt="Avatar">
+                    </div>
+      
+                    <div class="grow">
+                      <p class="text-sm sm:text-base font-semibold text-neutral-200">
+                        Ganesh Joshi
+                      </p>
+                      <p class="text-xs text-neutral-400">
+                        Happy customer
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Card -->
+      
+            <!-- Card -->
+            <div class="flex h-auto">
+              <div class="flex flex-col rounded-xl bg-neutral-900">
+                <div class="flex-auto p-4 md:p-6">
+                  <p class="text-base italic md:text-lg text-neutral-200">
+                    " I found Runiq wellness online and I joined the studio for the weight loss and body toning. Nikhil the trainer is very creative and strategic for designing  the everyday excercise plan. I found excercise plans are very effective for ... "
+                  </p>
+                </div>
+      
+                <div class="p-4 rounded-b-xl md:px-7 bg-neutral-800">
+                  <div class="flex items-center gap-x-3">
+                    <div class="shrink-0">
+                      <img class="size-8 sm:h-[2.875rem] sm:w-[2.875rem] rounded-full" src="https://riverwalkcounseling.net/wp-content/uploads/2018/06/image-placeholder-female-1.png" alt="Avatar">
+                    </div>
+      
+                    <div class="grow">
+                      <p class="text-sm sm:text-base font-semibold text-neutral-200">
+                        Mithila Undale
+                      </p>
+                      <p class="text-xs text-neutral-400">
+                        Happy customer
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Card -->
+          </div>
+          <!-- End Grid -->
+      
+          <!-- Grid -->
+          <div class="mt-20 grid gap-6 grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-8">
+            <!-- Stats -->
+            <div>
+              <h4 class="text-xl sm:text-2xl font-semibold text-white">Accuracy rate</h4>
+              <p class="mt-2 sm:mt-3 text-4xl sm:text-6xl font-bold text-yellow-500">99.95%</p>
+              <p class="mt-1 text-gray-100">in fulfilling orders</p>
+            </div>
+            <!-- End Stats -->
+      
+            <!-- Stats -->
+            <div>
+              <h4 class="text-xl sm:text-2xl font-semibold text-gray-100">Startup businesses</h4>
+              <p class="mt-2 sm:mt-3 text-4xl sm:text-6xl font-bold text-yellow-500">2,000+</p>
+              <p class="mt-1 text-white">partner with Preline</p>
+            </div>
+            <!-- End Stats -->
+      
+            <!-- Stats -->
+            <div>
+              <h4 class="text-xl sm:text-2xl font-semibold text-white">Happy customer</h4>
+              <p class="mt-2 sm:mt-3 text-4xl sm:text-6xl font-bold text-yellow-500">85%</p>
+              <p class="mt-1 text-gray-100">this year alone</p>
+            </div>
+            <!-- End Stats -->
+          </div>
+          <!-- End Grid -->
+      
+          <!-- SVG Element -->
+          <div class="absolute bottom-0 right-0 transform lg:translate-y-24" aria-hidden="true">
+            <svg class=" h-auto w-40 sm:w-72" width="1115" height="636" viewBox="0 0 1115 636" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.990203 279.321C-1.11035 287.334 3.68307 295.534 11.6966 297.634L142.285 331.865C150.298 333.965 158.497 329.172 160.598 321.158C162.699 313.145 157.905 304.946 149.892 302.845L33.8132 272.418L64.2403 156.339C66.3409 148.326 61.5475 140.127 53.5339 138.026C45.5204 135.926 37.3213 140.719 35.2207 148.733L0.990203 279.321ZM424.31 252.289C431.581 256.26 440.694 253.585 444.664 246.314C448.635 239.044 445.961 229.931 438.69 225.96L424.31 252.289ZM23.0706 296.074C72.7581 267.025 123.056 230.059 187.043 212.864C249.583 196.057 325.63 198.393 424.31 252.289L438.69 225.96C333.77 168.656 249.817 164.929 179.257 183.892C110.144 202.465 54.2419 243.099 7.92943 270.175L23.0706 296.074Z" fill="currentColor" class="fill-yellow-500"/>
+              <path d="M451.609 382.417C446.219 388.708 446.95 398.178 453.241 403.567L555.763 491.398C562.054 496.788 571.524 496.057 576.913 489.766C582.303 483.474 581.572 474.005 575.281 468.615L484.15 390.544L562.222 299.413C567.612 293.122 566.881 283.652 560.59 278.263C554.299 272.873 544.829 273.604 539.44 279.895L451.609 382.417ZM837.202 559.655C841.706 566.608 850.994 568.593 857.947 564.09C864.9 559.586 866.885 550.298 862.381 543.345L837.202 559.655ZM464.154 407.131C508.387 403.718 570.802 395.25 638.136 410.928C704.591 426.401 776.318 465.66 837.202 559.655L862.381 543.345C797.144 442.631 718.724 398.89 644.939 381.709C572.033 364.734 504.114 373.958 461.846 377.22L464.154 407.131Z" fill="currentColor" class="fill-cyan-500"/>
+              <path d="M447.448 0.194357C439.203 -0.605554 431.87 5.43034 431.07 13.6759L418.035 148.045C417.235 156.291 423.271 163.623 431.516 164.423C439.762 165.223 447.095 159.187 447.895 150.942L459.482 31.5025L578.921 43.0895C587.166 43.8894 594.499 37.8535 595.299 29.6079C596.099 21.3624 590.063 14.0296 581.818 13.2297L447.448 0.194357ZM1086.03 431.727C1089.68 439.166 1098.66 442.239 1106.1 438.593C1113.54 434.946 1116.62 425.96 1112.97 418.521L1086.03 431.727ZM434.419 24.6572C449.463 42.934 474.586 81.0463 521.375 116.908C568.556 153.07 637.546 187.063 742.018 200.993L745.982 171.256C646.454 157.985 582.444 125.917 539.625 93.0974C496.414 59.978 474.537 26.1903 457.581 5.59138L434.419 24.6572ZM742.018 200.993C939.862 227.372 1054.15 366.703 1086.03 431.727L1112.97 418.521C1077.85 346.879 956.138 199.277 745.982 171.256L742.018 200.993Z" fill="currentColor" class="fill-white"/>
+            </svg>
+          </div>
+          <!-- End SVG Element -->
+        </div>
+      </div>
+      <!-- End Testimonials -->
+      
+        <!-- Maps -->
+        <div class="flex md:flex-row flex-col md:justify-between px-6 md:space-x-4 space-y-8">
+          <div class="flex flex-col px-4 py-10 sm:py-12 lg:py-16 bg-neutral-800 md:w-[35rem] rounded-xl space-y-6">
+          <div class="text-4xl font-extrabold text-white w-full">LEAVE YOUR DETAILS AND, WE WILL REACH OUT!</div>
+          <div class="py-4">
+            <form action="#" class="space-y-4 sm:text-left text-center w-full">
+              <div>
+                <input type="text" name="name" id="email" placeholder="Name" class="w-full bg-neutral-600 hover:bg-neutral-400 px-4 py-3 rounded-lg font-semibold focus:outline-none placeholder-white">
+              </div>
+              <div>
+                <input type="tel" name="number" id="number" placeholder="Mobile No." class="w-full bg-neutral-600 hover:bg-neutral-400 px-4 py-3 rounded-lg font-semibold focus:outline-none placeholder-white">
+              </div>
+              <div>
+                <input type="submit" value="Contact Me"  class="px-2 py-4 w-full bg-teal-500 rounded-lg text-white hover:scale-105 duration-300">
+              </div>
+            </form>
+          </div>
+          
+          </div>
+          <div class="md:w-[40rem] ">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15136.498403524807!2d73.8212882!3d18.4780144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2955f35e4fbd9%3A0x28cf4588028cbcca!2sRuniQ%20Wellness%20-%20a%20premier%20personal%20training%20gym!5e0!3m2!1sen!2sin!4v1726227660158!5m2!1sen!2sin"  class="rounded-2xl w-full h-[25rem] map"></iframe>
+          </div>
+        </div>
+        <!-- End Maps -->
+        
+        <!-- Footer -->
+        <div class="bg-white mt-16 rounded-2xl py-10 ">
+          <div class="px-8">
+            <div class="grid sm:grid-cols-3 grid-cols-1 md:gap-x-4 gap-2 w-full text-center xl:px-28 md:px-10">
+              <!-- Logo -->
+              <div class="mx-auto flex items-center">
+                <div class="bg-neutral-900 px-4 py-2 rounded-xl">
+                <svg width="195" height="16.91820978689666" viewBox="0 0 350 30.366017566224777" class="looka-1j8o68f">
+                    <defs id="SvgjsDefs1013">
+                      <linearGradient id="SvgjsLinearGradient1016">
+                        <stop id="SvgjsStop1017" stop-color="#905e26" offset="0"></stop>
+                        <stop id="SvgjsStop1018" stop-color="#f5ec9b" offset="0.5"></stop><stop id="SvgjsStop1019" stop-color="#905e26" offset="1">
+                          </stop>
+                      </linearGradient>
+                      </defs>
+                      <g id="SvgjsG1014" featurekey="K5GtsI-0" transform="matrix(1.9769544355682869,0,0,1.9769544355682869,-1.9769530215402844,-10.912789389314865)" fill="url(#SvgjsLinearGradient1016)">
+                        <path d="M13.4 19.82 l0 0.18 l-3.14 0 l-4.08 -4.68 l-2.54 0 l0 4.68 l-2.64 0 l0 -14.02 c2.22 0 4.44 0.02 6.66 0.02 c3.3 0.02 5.04 2.22 5.04 4.64 c0 1.92 -0.88 3.86 -3.54 4.4 z M7.66 8.46 l-4.02 0 l0 4.48 l4.02 0 c1.68 0 2.4 -1.12 2.4 -2.24 s-0.74 -2.24 -2.4 -2.24 z M24.560000000000002 6.02 l2.62 0 l0 8.02 c0 4.14 -2.54 6.26 -6.06 6.26 c-3.36 0 -6.22 -2.04 -6.22 -6.26 l0 -8.02 l2.62 0 l0 8.02 c0 2.52 1.44 3.86 3.62 3.86 s3.42 -1.46 3.42 -3.86 l0 -8.02 z M38.96 14.68 l0 -8.7 l2.64 0 l0 14.02 l-1.64 0 l0 0.02 l-7.36 -9.46 l0 9.44 l-2.64 0 l0 -14 l2.14 0 z M46.66 20 l-2.62 0 l0 -14 l2.62 0 l0 14 z M55.67999999999999 5.66 c4.92 0 7.12 3.56 7.18 7.16 c0.02 1.6 -0.4 3.26 -1.3 4.56 l1.66 1.64 l-1.86 1.86 l-1.7 -1.68 c-1.06 0.68 -2.4 1.04 -3.98 1.04 c-4.98 0 -7.18 -3.62 -7.2 -7.26 c-0.02 -3.66 2.28 -7.32 7.2 -7.32 z M55.67999999999999 8.04 c-3.3 0 -4.64 2.64 -4.6 5 c0.04 2.3 1.56 4.76 4.6 4.76 c3.16 0 4.68 -2.66 4.58 -5.06 c-0.1 -2.26 -1.28 -4.7 -4.58 -4.7 z M88.98 6 l-5.04 14 l-2.24 0 l-1.74 -4.4 l-1.48 -4.42 l-1.46 4.46 l-1.7 4.36 l-2.24 0 l-5.14 -14 l2.96 0 l3.3 10.1 l3.4 -10.1 l1.72 0 l3.5 10.1 l3.2 -10.1 l2.96 0 z M101.04 17.4 l0 2.6 l-10.48 0 l0 -14 l10.48 0 l0 2.56 l-7.86 0 l0 3.22 l7.58 0 l0 2.46 l-7.58 0 l0 3.16 l7.86 0 z M103.08000000000001 6 l2.64 0 l0 11.56 l7.2 0 l0 2.44 l-9.84 0 l0 -14 z M114.78000000000002 6 l2.64 0 l0 11.56 l7.2 0 l0 2.44 l-9.84 0 l0 -14 z M135.68 14.68 l0 -8.7 l2.64 0 l0 14.02 l-1.64 0 l0 0.02 l-7.36 -9.46 l0 9.44 l-2.64 0 l0 -14 l2.14 0 z M151.18 17.4 l0 2.6 l-10.48 0 l0 -14 l10.48 0 l0 2.56 l-7.86 0 l0 3.22 l7.58 0 l0 2.46 l-7.58 0 l0 3.16 l7.86 0 z M164.38 8.3 l-2.1 1.08 c-0.48 -0.8 -1.8 -1.56 -3.32 -1.56 c-1.96 0 -2.9 0.82 -2.9 1.86 c0 1.22 1.44 1.56 3.12 1.76 c2.92 0.36 5.64 1.12 5.64 4.46 c0 3.12 -2.76 4.46 -5.88 4.46 c-2.86 0 -5.06 -0.88 -6.1 -3.44 l2.2 -1.14 c0.62 1.54 2.24 2.22 3.94 2.22 c1.66 0 3.22 -0.58 3.22 -2.1 c0 -1.32 -1.38 -1.86 -3.24 -2.06 c-2.86 -0.34 -5.5 -1.1 -5.5 -4.24 c0 -2.88 2.84 -4.06 5.42 -4.08 c2.18 0 4.44 0.62 5.5 2.78 z M177.6 8.3 l-2.1 1.08 c-0.48 -0.8 -1.8 -1.56 -3.32 -1.56 c-1.96 0 -2.9 0.82 -2.9 1.86 c0 1.22 1.44 1.56 3.12 1.76 c2.92 0.36 5.64 1.12 5.64 4.46 c0 3.12 -2.76 4.46 -5.88 4.46 c-2.86 0 -5.06 -0.88 -6.1 -3.44 l2.2 -1.14 c0.62 1.54 2.24 2.22 3.94 2.22 c1.66 0 3.22 -0.58 3.22 -2.1 c0 -1.32 -1.38 -1.86 -3.24 -2.06 c-2.86 -0.34 -5.5 -1.1 -5.5 -4.24 c0 -2.88 2.84 -4.06 5.42 -4.08 c2.18 0 4.44 0.62 5.5 2.78 z"></path>
+                      </g>
+                  </svg>
+                  </div>
+              </div>
+              <div></div>
+              <!-- Social -->
+              <div class="text-right">
+                <div class="flex flex-row justify-center">
+                  <a href="#" aria-label="Linkedin" class="p-4 text-gray-900">
+                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 93.06" class="fill-current">
+                    <g>
+                      <g>
+                        <path d="M11.185,0.08C5.004,0.08,0.001,5.092,0,11.259c0,6.173,5.003,11.184,11.186,11.184c6.166,0,11.176-5.011,11.176-11.184                   C22.362,5.091,17.351,0.08,11.185,0.08z">
+                        </path>
+                        <rect x="1.538" y="30.926" width="19.287" height="62.054">
+                        </rect>
+                        <path d="M69.925,29.383c-9.382,0-15.673,5.144-18.248,10.022h-0.258v-8.479H32.921H32.92v62.053h19.27V62.281                   c0-8.093,1.541-15.932,11.575-15.932c9.89,0,10.022,9.256,10.022,16.451v30.178H93.06V58.942                   C93.06,42.235,89.455,29.383,69.925,29.383z">
+                        </path>
+                      </g>
+                    </g>
+                    </svg>
+                  </a>
+                  <a href="#" aria-label="Twitter" class="p-4 text-gray-900">
+                    <svg id="immd3k" width="16" height="16" viewBox="0 0 1200 1227" xmlns="http://www.w3.org/2000/svg" class="fill-current">
+                    <path id="idt5wa" d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="#111827">
+       </path></svg>
+                  </a>
+                  <a id="icj8mo" href="#" class="p-4 text-gray-900">
+                  <svg id="i2kqqf" width="16" height="16" aria-label="Medium" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="fill-current">
+                  <path id="ic392r" d="M136,128c0,37.49512-28.71,68-64,68S8,165.49514,8,128,36.71,60,72,60,136,90.5049,136,128ZM240,64a8.00039,8.00039,0,0,0-8,8V184a8,8,0,0,0,16,0V72A8.00039,8.00039,0,0,0,240,64Zm-56,0c-5.68262,0-16.39941,2.76074-24.32373,21.251C154.72607,96.8008,152,111.98342,152,128s2.72607,31.19922,7.67627,42.749C167.60059,189.23928,178.31738,192,184,192s16.39941-2.76074,24.32373-21.251C213.27393,159.19924,216,144.01662,216,128s-2.72607-31.19922-7.67627-42.749C200.39941,66.76076,189.68262,64,184,64Z">
+       </path>
+       </svg>
+                  </a>
+                  <a href="#" aria-label="Youtube" class="p-4 text-gray-900">
+                  <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="fill-current"><path d="M234.33057,69.79736a23.96369,23.96369,0,0,0-14.50489-16.34619C185.55615,40.28223,130.97949,40.39209,128,40.40771c-2.978-.02392-57.55518-.126-91.8252,13.04346A23.96415,23.96415,0,0,0,21.66992,69.79639C19.083,79.72705,16,97.88574,16,128c0,30.11377,3.083,48.27246,5.66943,58.20264a23.96369,23.96369,0,0,0,14.50489,16.34619c32.80615,12.60693,84.22168,13.04541,91.167,13.04541.6206.00049.69678.00049,1.31738,0,6.95069-.00049,58.36231-.43945,91.16651-13.04541a23.96415,23.96415,0,0,0,14.50488-16.34522C236.917,176.273,240,158.11426,240,128,240,97.88623,236.917,79.72754,234.33057,69.79736Zm-72.11182,61.53076-48,32A3.99967,3.99967,0,0,1,108,160V96a3.99968,3.99968,0,0,1,6.21875-3.32813l48,32a3.99979,3.99979,0,0,1,0,6.65625Z">
+            </path></svg>
+                  </a>
+                  <a href="#" aria-label="Instagram" class="p-4 text-gray-900">
+                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" class="fill-current"><g><circle cx="12.145" cy="3.892" r="1">
+             </circle><path d="M8 12c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z">
+             </path><path d="M12 16H4c-2.056 0-4-1.944-4-4V4c0-2.056 1.944-4 4-4h8c2.056 0 4 1.944 4 4v8c0 2.056-1.944 4-4 4zM4 2c-.935 0-2 1.065-2 2v8c0 .953 1.047 2 2 2h8c.935 0 2-1.065 2-2V4c0-.935-1.065-2-2-2H4z">
+             </path></g></svg></a></div>
+              </div>
+              <!-- Copright -->
+              <div class="sm:col-span-3 text-center text-gray-500 text-sm p-2">
+                Copyright © Athade. All Rights Reserved.
+              </div>
+              <!-- Menu -->
+              <div class="sm:row-span-2">
+                <div class="flex flex-col sm:text-left space-y-2">
+                  <h1 class="font-semibold text-black md:text-xl text-lg">Menu</h1>
+                  <div class="flex flex-col space-y-1">
+                    <h2 class="text-gray-500 hover:text-gray-600 md:text-lg"><a href="#">Home</a></h2>
+                    <h2 class="text-gray-500 hover:text-gray-600 md:text-lg"><a href="#">Membership</a></h2>
+                    <h2 class="text-gray-500 hover:text-gray-600 md:text-lg"><a href="#">About</a></h2>
+                    <h2 class="text-gray-500 hover:text-gray-600 md:text-lg"><a href="#">Blog</a></h2>
+                  </div>
+                </div>
+              </div>
+              <!-- Quick link -->
+              <div class="sm:row-span-2">
+                <div class="flex flex-col sm:text-left space-y-2">
+                  <h1 class="font-semibold text-black md:text-xl text-lg">Quick link</h1>
+                  <div class="flex flex-col space-y-1">
+                    <h2 class="text-gray-500 hover:text-gray-600 md:text-lg"><a href="#">Home</a></h2>
+                    <h2 class="text-gray-500 hover:text-gray-600 md:text-lg"><a href="#">Membership</a></h2>
+                    <h2 class="text-gray-500 hover:text-gray-600 md:text-lg"><a href="#">About</a></h2>
+                    <h2 class="text-gray-500 hover:text-gray-600 md:text-lg"><a href="#">Blog</a></h2>
+                  </div>
+                </div>
+              </div>
+              <!-- Schedule -->
+              <div class="">
+                <div class="flex flex-col sm:text-left">
+                  <h1 class="font-semibold text-black lg:text-xl text-lg sm:mr-auto">Schedule</h1>
+                  <div class="grid grid-cols-2 text-gray-500 lg:text-lg md:text-base sm:text-sm sm:mr-auto">
+                      <div>
+                        <h2>Everyday:</h2>
+                      </div>
+                      <div>
+                        <h2>6:30 – 10:30</h2>
+                        <h2>17:30 – 21:00</h2>
+                      </div>
+                    <h2>
+                      Sat: </h2> <h2> 6:30 - 11:30
+                    </h2>
+                  </div>
+                </div>
+              </div>
+              <!-- Inquiries -->
+              <div class="">
+                <div class="flex flex-col sm:text-left">
+                  <h1 class="font-semibold text-black lg:text-xl text-lg">Inquiries?</h1>
+                    <h2 class="text-gray-500 lg:text-lg md:text-base sm:text-sm">+91 95456 14242</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Footer -->
+      </div>
+      
+  </body>
+  </html>
